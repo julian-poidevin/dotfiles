@@ -1,0 +1,55 @@
+#!/bin/sh
+{{ if eq .osid "linux-arch" }}
+
+#Install yay-bin of not available
+if ! command -v yay &> /dev/null
+then
+    sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay-bin && makepkg -si
+fi
+
+SHELL_PACKAGES="\
+    zsh \
+    zsh-thefuck-git \
+    ttf-jetbrains-mono-nerd \
+"
+
+DEV_PACKAGES="\
+    base-devel \
+"
+
+HARDWARE_PACKAGES="\
+    evdi \
+    displaylink \
+"
+
+UTILS_PACKAGES="\
+    docker \
+    docker-compose \
+    docker-buildx \
+    google-chrome \
+    vtop \
+    bmap-tools \
+    can-utils \
+    dropbox \
+    programmer-calculator \
+"
+
+yay -Sy --noconfirm --needed \
+    $SHELL_PACKAGES \
+    $HARDWARE_PACKAGES \
+    $DEV_PACKAGES \
+    $UTILS_PACKAGES
+
+# Add user to the docker group
+sudo usermod $USER --append --group docker
+
+{{- if eq .chezmoi.hostname "work-archlinux" }}
+# Install extra packages needed for work
+yay -Sy --noconfirm --needed \
+    picoscope7beta
+
+# Add user to the pico group (for picoscope software)
+sudo usermod $USER --append --group pico
+{{- end }}
+
+{{ end -}}
