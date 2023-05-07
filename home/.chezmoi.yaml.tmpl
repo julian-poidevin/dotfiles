@@ -1,0 +1,27 @@
+{{/* boolean feature tags */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets */}}
+
+{{- $osID := .chezmoi.os -}}
+{{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{/* Set boolean feature tags based on current system */}}
+{{- if eq .chezmoi.hostname "work-archlinux" }}
+{{-   $personal = true -}}
+{{- end -}}
+
+{{- $workEmail := promptStringOnce . "workEmail" "Work email address" -}}
+{{- $personalEmail := promptStringOnce . "personalEmail" "Personal email address" -}}
+
+data:
+    workEmail: {{ $workEmail | quote }}
+    personalEmail: {{ $personalEmail | quote }}
+    osid: {{ $osID | quote }}
+    personal: {{ $personal }}
+
+{{- if $personal }}
+    bitwarden:
+        github_work_repo_token: a00aff84-3b72-485e-91f5-aff40162909e
+        work_archlinux_ssh_private_key: 4cdf8f60-432d-4b1c-b8d2-aff50010b222
+{{- end -}}

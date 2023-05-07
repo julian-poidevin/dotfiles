@@ -34,11 +34,35 @@ UTILS_PACKAGES="\
     programmer-calculator \
 "
 
+HYPRLAND_DE="\
+    ttf-font-awesome \
+    ttf-jetbrains-mono-nerd \
+    ttf-iosevka-nerd \
+    waybar-hyprland-git \
+    waybar-module-pacman-updates-git \
+    rofi \
+    dunst \
+    kitty \
+    swaybg \
+    swaylock-effects-git \
+    swayidle \
+    pamixer \
+    brightnessctl \
+    canva \
+    grim \
+    slurp \
+    swappy \
+    pavucontrol \
+    thunar \
+    pacman-contrib \
+"
+
 yay -Sy --noconfirm --needed \
     $SHELL_PACKAGES \
     $HARDWARE_PACKAGES \
     $DEV_PACKAGES \
-    $UTILS_PACKAGES
+    $UTILS_PACKAGES \
+    $HYPRLAND_DE
 
 # Add user to the docker group
 sudo usermod $USER --append --group docker

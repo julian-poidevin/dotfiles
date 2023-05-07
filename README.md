@@ -27,3 +27,21 @@ My dotfiles for `arch-linux`. Managed by [`chezmoi`](https://github.com/twpayne/
     ```
 
 ### Zsh
+
+## Keybinds
+
+### General
+
+| Keybind                                            | Description                                   |
+| -------------------------------------------------- | --------------------------------------------- |
+| <kbd>SUPER</kbd> + <kbd>T</kbd>                    | Open Kitty terminal                           |
+
+### Special Keys
+
+| Keybind                    | Description                 |
+| -------------------------- | --------------------------- |
+| <kbd>Volume Up</kbd>       | Increase volume by 5%       |
+| <kbd>Volume Down</kbd>     | Decrease volume by 5%       |
+| <kbd>Mute</kbd>            | Toggle mute                 |
+| <kbd>Brightness Up</kbd>   | Increase brightness by 2%   |
+| <kbd>Brightness Down</kbd> | Decrease brightness by 2%   |
