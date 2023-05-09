@@ -1,14 +1,26 @@
 {
     "height": 40, // Waybar height (to be removed for auto height)
     "layer": "top", // Waybar at top layer
-    "modules-left": ["custom/launcher", "wlr/workspaces","cpu", "memory", "disk","hyprland/window"],
-    "modules-right": ["temperature", "pulseaudio", "pulseaudio#microphone", "battery", "tray"],
-    "modules-center": ["custom/lock", "clock", "custom/updates", "custom/power-menu"],
-
-    "custom/launcher": {
-        "format": "",
-        "on-click": "rofi -show drun &",
-    },
+    "modules-left": [
+        "wlr/workspaces",
+        "cpu",
+        "memory",
+        "disk",
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "temperature",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "battery",
+        "tray"
+    ],
+    "modules-center": [
+        "custom/lock",
+        "clock",
+        "custom/pacman",
+        "custom/power-menu"
+    ],
     "wlr/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -42,16 +54,25 @@
         // }
     },
     "cpu": {
-        "interval":1,
+        "interval": 1,
         "format": "{icon0} {icon1} {icon2} {icon3}",
-        "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+        "format-icons": [
+            "▁",
+            "▂",
+            "▃",
+            "▄",
+            "▅",
+            "▆",
+            "▇",
+            "█"
+        ]
     },
     "memory": {
         "interval": 1,
         "format": " {}%",
-        "format-alt":" {used:0.1f}GB",
+        "format-alt": " {used:0.1f}GB",
         "max-length": 10,
-        "on-click": "kitty --class system_monitor -e btop",
+        "on-click-right": "kitty --class system_monitor -e btop",
     },
     "disk": {
         "interval": 30,
@@ -59,19 +80,17 @@
         "path": "/",
         "tooltip": true,
         "tooltip-format": "HDD - {used} used out of {total} on {path} ({percentage_used}%)",
-        "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
+        "on-click-right": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
     },
     "hyprland/window": {
         "format": "{}"
     },
-    
-    
     "temperature": {
         "thermal-zone": 4,
         "format": " {temperatureC}°C",
         "critical-threshold": 70,
         "format-critical": " {temperatureC}°C",
-        "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
+        "on-click-right": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -88,7 +107,11 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         }
     },
     "pulseaudio#microphone": {
@@ -102,41 +125,47 @@
         "scroll-step": 5
     },
     "battery": {
-      "bat": "BAT0",
-      "adapter": "ADP0",
-      "interval": 60,
-      "states": {
-          "warning": 30,
-          "critical": 15
-      },
-      "max-length": 20,
-      "format": "{icon} ",
-      "format-warning": "{icon}",
-      "format-critical": "{icon}",
-      "format-charging": "<span font-family='Font Awesome 6 Free'></span>",
-      "format-plugged": "ﮣ", 
-
-      "format-alt": "{icon} {time}",
-      "format-full": "<span font='Font Awesome 5 Free'></span>", 
-      "format-icons": ["", "", "", "", ""],
-   },   
+        "bat": "BAT0",
+        "adapter": "ADP0",
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "max-length": 20,
+        "format": "{icon} ",
+        "format-warning": "{icon}",
+        "format-critical": "{icon}",
+        "format-charging": "<span font-family='Font Awesome 6 Free'></span>",
+        "format-plugged": "ﮣ",
+        "format-alt": "{icon} {time}",
+        "format-full": "<span font='Font Awesome 5 Free'></span>",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+    },
     "tray": {
         "spacing": 10
     },
     "custom/lock": {
-        "tooltip" : false,
+        "tooltip": false,
         "on-click": "swaylock",
-        "format" : "",
-     },
-    "custom/updates": {
-        "format": "{} {icon}",
+        "format": "",
+    },
+    "custom/pacman": {
+        "format": "{icon}{}",
         "return-type": "json",
         "format-icons": {
-            "has-updates": "󱍷",
-            "updated": "󰂪"
+            "pending-updates": " ",
+            "updated": ""
         },
-        "exec-if": "which waybar-module-pacman-updates",
-        "exec": "waybar-module-pacman-updates"
+        "exec-if": "which waybar-updates",
+        "exec": "waybar-updates",
+        "on-click": "kitty --title update-sys sh -c 'yay -Syu'"
     },
     "clock": {
         "format": "{:%H:%M}",
@@ -146,5 +175,5 @@
     "custom/power-menu": {
         "format": " ⏻ ",
         "on-click": "bash ~/.config/waybar/scripts/power-menu/powermenu.sh &",
-    }, 
+    },
 }

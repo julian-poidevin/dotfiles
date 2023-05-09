@@ -45,3 +45,9 @@ My dotfiles for `arch-linux`. Managed by [`chezmoi`](https://github.com/twpayne/
 | <kbd>Mute</kbd>            | Toggle mute                 |
 | <kbd>Brightness Up</kbd>   | Increase brightness by 2%   |
 | <kbd>Brightness Down</kbd> | Decrease brightness by 2%   |
+
+---
+### Credits
+Thanks to the following individuals for their contributions to this project:
+- [twpayne](https://github.com/twpayne) for providing such a great tool as [chezmoi](https://github.com/twpayne/chezmoi)
+- [felipecrs](https://github.com/felipecrs) for his [dotfiles repository](https://github.com/felipecrs/dotfiles) which served as a valuable reference for this project.

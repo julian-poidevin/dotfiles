@@ -26,14 +26,13 @@ window#waybar.hidden {
 
 #clock,
 #cpu,
-#custom-updates,
 #disk,
 #memory,
 #temperature,
 #tray,
 #mode,
-#custom-launcher,
-#custom-updates,
+#custom-pacman,
+#custom-pacman.pending-updates,
 #custom-lock,
 #idle_inhibitor,
 #custom-power-menu {
@@ -71,7 +70,7 @@ window#waybar.hidden {
     margin-left: 25px;
 }
 #workspaces button {
-    box-shadow: rgba(0, 0, 0, 0.116) 2 2 5 2px;
+    box-shadow: rgba(0, 0, 0, 0.116) 2px 2px 5px 2px;
     background-color: #252733;
     border-radius: 15px;
     margin-right: 10px;
@@ -84,7 +83,7 @@ window#waybar.hidden {
 
 #workspaces button.active {
     padding-right: 20px;
-    box-shadow: rgba(0, 0, 0, 0.288) 2 2 5 2px;
+    box-shadow: rgba(0, 0, 0, 0.288) 2px 2px 5px 2px;
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
     padding-left: 20px;
     padding-bottom: 3px;
@@ -96,12 +95,12 @@ window#waybar.hidden {
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
-  margin-left: 50;
+  margin-left: 50px;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
-  margin-right: 0;
+  margin-right: 0px;
 }
 
 #battery,
@@ -219,11 +218,6 @@ window#waybar.hidden {
   margin-bottom: 7px;
 }
 
-#custom-launcher {
-  margin-left: 10px;
-  border-right: 0px;
-}
-
 tooltip {
   font-family: Iosevka Nerd Font;
   border-radius: 15px;
@@ -267,17 +261,20 @@ label:focus {
 
 @keyframes blink-update {
   to {
-    background-color: dodgerblue;
+    color: #e5e5e5;
+    background-color: #7994C7;
   }
 }
 
 #custom-pacman {
+  color: #8a909e;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
 #custom-pacman.pending-updates {
+  color: #8a909e;
   animation-name: blink-update;
   animation-duration: 3s;
 }
