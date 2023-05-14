@@ -2,11 +2,12 @@
 
 # Dotfiles
 
-![Latest commit](https://img.shields.io/github/last-commit/julian-poidevin/dotfiles?style=flat)
+![](https://img.shields.io/github/last-commit/julian-poidevin/dotfiles?style=for-the-badge&color=7AA2F7)
+![](https://img.shields.io/github/license/julian-poidevin/dotfiles?color=F5758D&style=for-the-badge)
 
 My dotfiles for `arch-linux`. Managed by [`chezmoi`](https://github.com/twpayne/chezmoi).
 
-[Deployment](#Deployement) • [Zsh](#zsh) •
+[What is in this repo](#what-is-in-this-repo) • [Installation](#installation) • [Keybinds](#keybinds)
 
 <center>
 <img alt="neofetch" src="docs/screenshots/neofetch.png">
@@ -16,7 +17,6 @@ My dotfiles for `arch-linux`. Managed by [`chezmoi`](https://github.com/twpayne/
 </details>
 </center>
 </div>
-
 
 ## What is in this repo
 This repository contains my personal configuration for Linux.
