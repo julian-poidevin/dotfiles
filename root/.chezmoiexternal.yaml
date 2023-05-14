@@ -1,6 +1,0 @@
-"usr/share/sddm/themes/tokyo-night-sddm":
-  type: archive
-  url: "https://github.com/rototrash/tokyo-night-sddm/archive/master.tar.gz"
-  exact: true
-  stripComponents: 1
-  refreshPeriod: "168h"

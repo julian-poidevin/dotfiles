@@ -10,6 +10,10 @@ My dotfiles for `arch-linux`. Managed by [`chezmoi`](https://github.com/twpayne/
 
 <center>
 <img alt="neofetch" src="docs/screenshots/neofetch.png">
+<details>
+<summary align=center>More Previews</summary>
+<img alt="sddm-lock-screen" src="docs/screenshots/lock-screen.png">
+</details>
 </center>
 </div>
 
