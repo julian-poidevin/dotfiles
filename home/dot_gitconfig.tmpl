@@ -1,24 +1,24 @@
 [user]
-    email = {{ .personalEmail | quote }}
-    name = Julian POIDEVIN
-    signingkey = DD01667A697E933F
+	email = {{ .personalEmail | quote }}
+	name = Julian POIDEVIN
+	signingkey = DD01667A697E933F
 
 [color]
-    ui = auto
+	ui = auto
 
 [core]
-    editor = code-insiders
-    whitespace = trailing-space,space-before-tab
+	editor = code-insiders
+	whitespace = trailing-space,space-before-tab
 
 [fetch]
-    fsckobjects = false
-    prune = true
+	fsckobjects = false
+	prune = true
 
 [status]
-    submoduleSummary = true
+	submoduleSummary = true
 
 [includeIf "gitdir:~/repo/"]
-    path = ~/repo/.gitconfig
+	path = ~/repo/.gitconfig
 
 [commit]
-    gpgsign = true
+	gpgsign = true
