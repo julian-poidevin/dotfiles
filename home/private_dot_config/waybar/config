@@ -184,6 +184,6 @@
     },
     "custom/power-menu": {
         "format": " ⏻ ",
-        "on-click": "bash ~/.config/waybar/scripts/power-menu/powermenu.sh &"
+        "on-click": "bash ~/.config/rofi/powermenu/type-6/powermenu.sh style-1 &"
     }
 }

@@ -66,6 +66,12 @@ yay -Sy --noconfirm --needed \
     $UTILS_PACKAGES \
     $HYPRLAND_DE
 
+# Install rofi-addons
+git clone https://github.com/julian-poidevin/rofi-addons-pkg.git && \
+cd rofi-addons-pkg && \
+makepkg -si --noconfirm && \
+cd ../ && rm -rf rofi-addons-pkg
+
 # Add user to the docker group
 sudo usermod $USER --append --group docker
 
