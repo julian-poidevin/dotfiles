@@ -35,7 +35,7 @@ Here's the list of what is included in these dotfiles :
 
 * Deploy with shell one-liner:
     ```sh
-    sh -c "$(curl -fsLS git.io/chezmoi)" -- init --apply julian-poidevin
+    sh -c "$(curl -fsLS git.io/chezmoi)" -- init --branch=hyprland-tokyo --apply julian-poidevin
     ```
 
 ## Keybinds

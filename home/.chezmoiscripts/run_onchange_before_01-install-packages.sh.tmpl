@@ -1,10 +1,13 @@
 #!/bin/sh
 {{ if eq .osid "linux-arch" }}
 
-#Install yay-bin of not available
-if ! command -v yay &> /dev/null
-then
-    sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay-bin && makepkg -si
+#Install yay of not available
+if ! [ -x "$(command -v yay)" ]; then
+  sudo pacman --noconfirm -S --needed git base-devel && 
+  git clone https://aur.archlinux.org/yay.git && cd yay && \
+  makepkg -sf --noconfirm && \
+  sudo pacman --noconfirm -U yay-*.zst && \
+  cd ../yay && rm -rf yay
 fi
 
 SHELL_PACKAGES="\
@@ -69,13 +72,20 @@ yay -Sy --noconfirm --needed \
     $HYPRLAND_DE
 
 # Install rofi-addons
+if [ -d rofi-addons-pkg ]; then
+rm -rf rofi-addons-pkg
+fi
+
 git clone https://github.com/julian-poidevin/rofi-addons-pkg.git && \
 cd rofi-addons-pkg && \
-makepkg -si --noconfirm && \
+makepkg -sf --noconfirm && \
+sudo pacman --noconfirm -U rofi-addons-*.zst && \
 cd ../ && rm -rf rofi-addons-pkg
 
 # Add user to the docker group
-sudo usermod $USER --append --group docker
+getent group docker || sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
 
 {{- if eq .chezmoi.hostname "work-archlinux" }}
 # Install extra packages needed for work
