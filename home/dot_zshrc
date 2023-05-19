@@ -80,7 +80,7 @@ plugins=(
   zsh-syntax-highlighting # This should be the last entry
 )
 
-# source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
