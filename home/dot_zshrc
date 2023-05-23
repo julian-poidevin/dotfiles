@@ -107,6 +107,7 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias s="kitty +kitten ssh"
 
 # Start starship shell
 eval "$(starship init zsh)"
