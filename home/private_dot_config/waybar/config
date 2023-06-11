@@ -1,0 +1,189 @@
+{
+    "height": 40, // Waybar height (to be removed for auto height)
+    "layer": "top", // Waybar at top layer
+    "modules-left": [
+        "wlr/workspaces",
+        "cpu",
+        "memory",
+        "disk",
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "temperature",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "battery",
+        "tray"
+    ],
+    "modules-center": [
+        "custom/lock",
+        "clock",
+        "custom/pacman",
+        "custom/power-menu"
+    ],
+    "wlr/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+        "active-only": true,
+        "format": "{icon}",
+        "format-active": " {icon} ",
+        "on-click": "activate",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": []
+        }
+    },
+    "cpu": {
+        "interval": 1,
+        "format": " {usage:>2}% {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+        "format-icons": [
+            "▁",
+            "▂",
+            "▃",
+            "▄",
+            "▅",
+            "▆",
+            "▇",
+            "█"
+        ]
+    },
+    "memory": {
+        "interval": 1,
+        "format": " {}%",
+        "format-alt": " {used:0.1f}GB",
+        "max-length": 10,
+        "on-click-right": "kitty --class system_monitor -e btop"
+    },
+    "disk": {
+        "interval": 30,
+        "format": "󰋊 {percentage_used}%",
+        "path": "/",
+        "tooltip": true,
+        "tooltip-format": "HDD - {used} used out of {total} on {path} ({percentage_used}%)",
+        "on-click-right": "kitty --class system_monitor -e btop"
+    },
+    "hyprland/window": {
+        "format": "{}"
+    },
+    "temperature": {
+        "thermal-zone": 4,
+        "format": " {temperatureC}°C",
+        "critical-threshold": 70,
+        "format-critical": " {temperatureC}°C",
+        "on-click-right": "kitty --class system_monitor -e btop"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "on-click": "pamixer -t",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pamixer -i 5",
+        "on-scroll-down": "pamixer -d 5",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        }
+    },
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "on-click": "pamixer --default-source -t",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5",
+        "scroll-step": 5
+    },
+    "battery": {
+        "bat": "BAT0",
+        "adapter": "ADP0",
+        "interval": 60,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "max-length": 20,
+        "format": "{icon} ",
+        "format-warning": "{icon}",
+        "format-critical": "{icon}",
+        "format-charging": "<span font-family='Font Awesome 6 Free'></span>",
+        "format-plugged": "ﮣ",
+        "format-alt": "{icon} {time}",
+        "format-full": "<span font='Font Awesome 5 Free'></span>",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+    },
+    "tray": {
+        "spacing": 10
+    },
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "swaylock",
+        "format": "",
+    },
+    "custom/pacman": {
+        "format": "{icon}{}",
+        "return-type": "json",
+        "format-icons": {
+            "pending-updates": " ",
+            "updated": ""
+        },
+        "exec-if": "which waybar-updates",
+        "exec": "waybar-updates",
+        "on-click": "kitty --title update-sys sh -c 'yay -Syu'"
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A %b %d %Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "locale" : "fr_FR",
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+    "custom/power-menu": {
+        "format": " ⏻ ",
+        "on-click": "bash ~/.config/rofi/powermenu/type-6/powermenu.sh style-1 &"
+    }
+}
