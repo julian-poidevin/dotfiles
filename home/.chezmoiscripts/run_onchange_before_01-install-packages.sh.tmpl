@@ -82,10 +82,13 @@ makepkg -sf --noconfirm && \
 sudo pacman --noconfirm -U rofi-addons-*.zst && \
 cd ../ && rm -rf rofi-addons-pkg
 
+echo after rofi
+
 # Add user to the docker group
 getent group docker || sudo groupadd docker
 sudo usermod -aG docker $USER
-newgrp docker
+
+echo after docker
 
 {{- if eq .chezmoi.hostname "work-archlinux" }}
 # Install extra packages needed for work
