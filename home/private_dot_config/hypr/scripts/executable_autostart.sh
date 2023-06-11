@@ -21,7 +21,7 @@ exec waybar &
 ## Notification 
 exec dunst &
 ## Wallpaper
-exec swaybg -o \* -i ~/.config/hypr/wallpapers/tokyo-night-4.jpg -m fill &
+exec swaybg -o \* -i ~/.config/hypr/wallpapers/tokyo-night-5.jpg -m fill &
 ## Bluetooth (Make sure you have installed blueman + blueman-utils)
 exec blueman-applet &
 
