@@ -24,6 +24,8 @@ exec dunst &
 exec swaybg -o \* -i ~/.config/hypr/wallpapers/tokyo-night-5.jpg -m fill &
 ## Bluetooth (Make sure you have installed blueman + blueman-utils)
 exec blueman-applet &
+## Network applet
+exec nm-applet &
 
 # Screen Sharing 
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
